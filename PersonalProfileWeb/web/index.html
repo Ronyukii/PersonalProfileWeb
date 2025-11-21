@@ -1,16 +1,70 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<head>
+    <title>Create Your Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background-color: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 400px; }
+        h2 { text-align: center; color: #333; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #666; }
+        input[type="text"], input[type="email"], textarea, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        textarea { resize: vertical; }
+        .hobbies-group { display: flex; flex-wrap: wrap; gap: 10px; }
+        .hobbies-group label { display: inline-block; margin: 0; font-weight: normal; }
+        input[type="submit"] { width: 100%; background-color: #5cb85c; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        input[type="submit"]:hover { background-color: #4cae4c; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Registration</h2>
+        <form action="ProfileServlet" method="post">
+            
+            <div class="form-group">
+                <label>Full Name:</label>
+                <input type="text" name="name" required placeholder="e.g. Ali Bin Abu">
+            </div>
+
+            <div class="form-group">
+                <label>Student ID:</label>
+                <input type="text" name="studentId" required placeholder="e.g. 2024123456">
+            </div>
+
+            <div class="form-group">
+                <label>Program:</label>
+                <select name="program">
+                    <option value="CS230">CS230 - Computer Science</option>
+                    <option value="CS240">CS240 - Information Technology</option>
+                    <option value="CS255">CS255 - Netcentric Computing</option>
+                    <option value="CS110">CS110 - Diploma in CS</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="email" required placeholder="student@uitm.edu.my">
+            </div>
+
+            <div class="form-group">
+                <label>Hobbies:</label>
+                <div class="hobbies-group">
+                    <label><input type="checkbox" name="hobbies" value="Reading"> Reading</label>
+                    <label><input type="checkbox" name="hobbies" value="Gaming"> Gaming</label>
+                    <label><input type="checkbox" name="hobbies" value="Sports"> Sports</label>
+                    <label><input type="checkbox" name="hobbies" value="Coding"> Coding</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Self Introduction:</label>
+                <textarea name="introduction" rows="4" placeholder="Tell us a bit about yourself..."></textarea>
+            </div>
+
+            <input type="submit" value="Generate Profile">
+        </form>
+    </div>
+</body>
 </html>

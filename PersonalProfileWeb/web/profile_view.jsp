@@ -1,6 +1,6 @@
 <%-- 
     Document   : profile_view
-    Created on : Nov 22, 2025, 1:40:56 AM
+    Created on : Nov 22, 2025, 1:11:55 AM
     Author     : Ron
 --%>
 
@@ -10,117 +10,153 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My Personal Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100vh;
-            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #E0C3FC 0%, #8EC5FC 100%);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
         .profile-card {
-            background-color: white;
-            width: 350px;
-            border-radius: 15px;
+            background: white;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-        .header {
-            background-color: #4a4e69;
-            color: white;
-            padding: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
             position: relative;
         }
-        .avatar-circle {
-            width: 80px;
-            height: 80px;
-            background-color: #fff;
+        /* Header Background Design */
+        .card-header {
+            height: 140px;
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+            position: relative;
+        }
+        .avatar-container {
+            width: 100px;
+            height: 100px;
+            background: white;
             border-radius: 50%;
-            margin: 0 auto 10px;
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             justify-content: center;
             align-items: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             font-size: 40px;
-            color: #4a4e69;
-            border: 4px solid #f2f2f2;
+            color: #a18cd1;
+            font-weight: 600;
+            border: 4px solid white;
         }
-        .body {
-            padding: 20px;
-            color: #555;
+        .card-body {
+            padding: 60px 30px 30px; /* Top padding accounts for the avatar */
+            text-align: center;
         }
-        .info-item {
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
+        .user-name {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
         }
-        .info-label {
-            font-weight: bold;
-            color: #222;
-            display: block;
+        .user-program {
+            color: #888;
             font-size: 0.9em;
+            font-weight: 500;
             text-transform: uppercase;
-            margin-bottom: 3px;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
         }
-        .intro-box {
-            background-color: #f9f9f9;
-            padding: 10px;
-            border-radius: 5px;
-            font-style: italic;
-            font-size: 0.9em;
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            text-align: left;
+        }
+        .info-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #a18cd1;
+        }
+        .label {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            color: #999;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .value {
+            color: #444;
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+        .bio-box {
+            background: #fff0f5;
+            border-left-color: #fbc2eb;
+            margin-top: 5px;
         }
         .btn-back {
             display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: #f2f2f2;
+            margin-top: 25px;
+            padding: 12px;
             text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            transition: background 0.3s;
+            color: #a18cd1;
+            font-weight: 600;
+            border: 2px solid #f3eefc;
+            border-radius: 12px;
+            transition: all 0.3s;
         }
         .btn-back:hover {
-            background-color: #e0e0e0;
+            background: #f3eefc;
         }
     </style>
 </head>
 <body>
+
     <div class="profile-card">
-        <div class="header">
-            <div class="avatar-circle">
+        <div class="card-header">
+            <div class="avatar-container">
                 <%= request.getAttribute("userName").toString().charAt(0) %>
             </div>
-            <h2>${userName}</h2>
-            <p>${userProgram}</p>
         </div>
         
-        <div class="body">
-            <div class="info-item">
-                <span class="info-label">Student ID</span>
-                ${userId}
-            </div>
-            
-            <div class="info-item">
-                <span class="info-label">Email Address</span>
-                ${userEmail}
-            </div>
-            
-            <div class="info-item">
-                <span class="info-label">Hobbies</span>
-                ${userHobbies}
-            </div>
-            
-            <div class="info-item">
-                <span class="info-label">About Me</span>
-                <div class="intro-box">
-                    "${userIntro}"
+        <div class="card-body">
+            <div class="user-name">${userName}</div>
+            <div class="user-program">${userProgram}</div>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <span class="label">Student ID</span>
+                    <span class="value">${userId}</span>
+                </div>
+
+                <div class="info-box">
+                    <span class="label">Email</span>
+                    <span class="value">${userEmail}</span>
+                </div>
+
+                <div class="info-box">
+                    <span class="label">Interests</span>
+                    <span class="value">${userHobbies}</span>
+                </div>
+
+                <div class="info-box bio-box">
+                    <span class="label">About Me</span>
+                    <span class="value">"${userIntro}"</span>
                 </div>
             </div>
+
+            <a href="index.html" class="btn-back">Edit Profile</a>
         </div>
-        
-        <a href="index.html" class="btn-back">Edit Profile</a>
     </div>
+
 </body>
 </html>

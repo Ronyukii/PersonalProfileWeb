@@ -56,6 +56,9 @@
             <td><%= rs.getString("program") %></td>
             <td><%= rs.getString("hobbies") %></td>
             <td>
+                <a href="ProfileServlet?action=edit&id=<%= rs.getInt("id") %>" 
+                    style="color: #4CAF50; font-weight: bold; text-decoration: none; margin-right: 15px;">
+                    Edit</a>
                 <a href="ProfileServlet?action=delete&id=<%= rs.getInt("id") %>" 
                    class="delete-btn" onclick="return confirm('Delete?')">Delete</a>
             </td>
